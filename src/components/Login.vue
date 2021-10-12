@@ -1,10 +1,8 @@
 <template>
     <main>
-    <div>
-        <input v-model="input.username" type="text" name="username" placeholder="Username" \>
-        <input v-model="input.password" type="password" name="password" placeholder="Password" \>
+        <input v-model="input.username" type="text" name="username" placeholder="Username">
+        <input v-model="input.password" type="password" name="password" placeholder="Password">
         <button v-on:click="login()">Login</button>
-    </div>
     </main>
 </template>
 
