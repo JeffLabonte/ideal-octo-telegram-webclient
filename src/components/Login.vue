@@ -24,7 +24,6 @@ function getErrorMessage(response) {
         return INVALID_CREDENTIALS;
       }
   }
-  return NO_CREDENTIALS;
   return GENERIC_ERROR;
 }
 
