@@ -18,13 +18,13 @@ const NO_CREDENTIALS = "Please enter your credentials.";
 
 function getErrorMessage(response) {
   let non_field_errors = response.data.non_field_errors;
-
   switch (response.status) {
     case 400:
       if (non_field_errors[0] == API_400_INVALID_CREDS_MESSAGE) {
         return INVALID_CREDENTIALS;
       }
   }
+  return NO_CREDENTIALS;
   return GENERIC_ERROR;
 }
 
