@@ -1,9 +1,12 @@
 <template>
   <main>
-    <h3 v-bind:class="errorTextObject">{{ error }}</h3>
-    <input v-model="input.email" type="text" name="email" placeholder="Email" />
-    <input v-model="input.password" type="password" name="password" placeholder="Password" />
-    <button v-on:click="login()">Login</button>
+    <div>
+      <h3 v-bind:class="errorTextObject">{{ error }}</h3>
+      <input v-model="input.email" type="text" name="email" placeholder="Email" />
+      <input v-model="input.password" type="password" name="password" placeholder="Password" />
+      <button v-on:click="login()">Login</button>
+      <button href="/register">Need an account? Register</button>
+    </div>
   </main>
 </template>
 
