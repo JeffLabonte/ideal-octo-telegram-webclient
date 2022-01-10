@@ -1,4 +1,4 @@
-FROM node:lts
+FROM node:lts-alpine
 LABEL maintainer="grimsleepless@protonmail.com"
 
 RUN npm install -g http-server
