@@ -6,7 +6,7 @@
 import Register from "@/components/Register.vue";
 
 export default {
-  name: "Register",
+  name: "register-view",
   components: { Register },
 };
 </script>

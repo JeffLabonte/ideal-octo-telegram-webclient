@@ -31,7 +31,7 @@ function getErrorMessage(response) {
 }
 
 export default {
-  name: "Login",
+  name: "login-component",
   data() {
     return {
       input: {

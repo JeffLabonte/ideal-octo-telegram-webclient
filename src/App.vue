@@ -6,7 +6,7 @@
 import "semantic-ui-css/semantic.css";
 
 export default {
-  name: "Home",
+  name: "home-view",
 };
 </script>
 

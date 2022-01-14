@@ -24,8 +24,11 @@
 </template>
 
 <script>
+import axios from "axios";
+const URL = "http://backend:80";
+
 export default {
-  name: "Register",
+  name: "register-component",
   data() {
     return {
       input: {
