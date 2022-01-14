@@ -5,7 +5,9 @@
       <input v-model="input.email" type="text" name="email" placeholder="Email" />
       <input v-model="input.password" type="password" name="password" placeholder="Password" />
       <button v-on:click="login()">Login</button>
-      <button href="/register">Need an account? Register</button>
+      <router-link to="/register">
+        <button>Need an account? Register</button>
+      </router-link>
     </div>
   </main>
 </template>
