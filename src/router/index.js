@@ -13,7 +13,7 @@ const routes = [
     name: 'Register',
     component: Register
   },
-]
+];
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
