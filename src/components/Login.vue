@@ -53,8 +53,9 @@ export default {
   methods: {
     login: function () {
       if (this.input.email !== "" && this.input.password !== "") {
+        // TODO Add environment variable to change those!
         axios({
-          url: "http://192.168.68.117:80/api/auth/login/",
+          url: "http://backend:80/api/auth/login/",
           data: JSON.stringify({
             username: this.input.email,
             password: this.input.password,
