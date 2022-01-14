@@ -42,7 +42,18 @@ export default {
   },
   methods: {
     register: function () {
-      console.log("Log");
+      axios.post({
+        url: `{URL}/api/auth/registration`,
+        data: JSON.stringify({
+          email: this.input.email,
+          password1: this.input.password,
+          password2: this.input.passwordConfirmation,
+        }),
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
     },
   },
 };
