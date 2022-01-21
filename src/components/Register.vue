@@ -70,7 +70,7 @@ export default {
         password: "",
         passwordConfirmation: "",
       },
-      error: [],
+      errors: [],
     };
   },
   methods: {
