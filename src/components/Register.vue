@@ -51,7 +51,7 @@
       </p>
     </div>
     <div>
-      <input id="submi" name type="submit" value="Register" />
+      <input id="submi" type="submit" value="Register" />
     </div>
   </form>
 </template>
