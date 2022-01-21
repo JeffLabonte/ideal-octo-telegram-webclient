@@ -57,6 +57,8 @@
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
   name: "register-component",
   data() {
@@ -73,7 +75,20 @@ export default {
   },
   methods: {
     registerAccount() {
-      this.errors.append("This is a test");
+      let input = this.input;
+
+      if (
+        input.email === "" ||
+        input.emailConfirmation === "" ||
+        input.password === "" ||
+        input.passwordConfirmation === ""
+      ) {
+        this.errors("Please, complete the form ");
+      }
+      if (this.email !== this.input.emailConfirmation) {
+        this.errors.append("This is a test");
+      }
+      axios.post();
     },
   },
 };
