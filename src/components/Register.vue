@@ -90,13 +90,24 @@ export default {
           "Your email and email confirmation needs to be the same"
         );
       } else if (input.password !== input.passwordConfirmation) {
+        console.log("Test");
         this.errors.push(
           "Your password and password confirmation needs to be the same"
         );
       } else {
-        axios.post(this.url, JSON.stringify(this.input)).then((response) => {
-          console.log(response);
-        });
+        axios
+          .post(this.url, {
+            username: input.email,
+            email: input.email,
+            password1: input.password,
+            password2: input.passwordConfirmation,
+          })
+          .then((response) => {
+            console.log(response);
+          })
+          .catch((error) => {
+            console.log(error);
+          });
       }
     },
   },
