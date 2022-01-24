@@ -3,7 +3,7 @@
     <div v-if="errors.length">
       <p>Please fix the following errors:</p>
       <ul>
-        <li v-for="error in errors">{{ error }}</li>
+        <li v-for="error in errors" :key="error">{{ error }}</li>
       </ul>
     </div>
     <div id="email-box">
