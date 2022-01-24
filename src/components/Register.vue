@@ -83,12 +83,21 @@ export default {
         input.password === "" ||
         input.passwordConfirmation === ""
       ) {
-        this.errors.push("Please, complete the form ");
+        this.errors = ["Please, complete the form "];
+        return;
+      } else if (input.email !== input.emailConfirmation) {
+        this.errors.push(
+          "Your email and email confirmation needs to be the same"
+        );
+      } else if (input.password !== input.passwordConfirmation) {
+        this.errors.push(
+          "Your password and password confirmation needs to be the same"
+        );
+      } else {
+        axios.post(this.url, JSON.stringify(this.input)).then((response) => {
+          console.log(response);
+        });
       }
-      if (this.email !== this.input.emailConfirmation) {
-        this.errors.push("This is a test");
-      }
-      axios.post();
     },
   },
 };
