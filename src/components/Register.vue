@@ -1,9 +1,9 @@
 <template>
-  <form id="register" @submit="registerAccount">
+  <form id="register" @submit.prevent="registerAccount" method="post">
     <div v-if="errors.length">
       <p>Please fix the following errors:</p>
       <ul>
-        <li v-for="(index, error) in errors" :key="index">{{ error }}</li>
+        <li v-for="error in errors">{{ error }}</li>
       </ul>
     </div>
     <div id="email-box">
@@ -83,10 +83,10 @@ export default {
         input.password === "" ||
         input.passwordConfirmation === ""
       ) {
-        this.errors("Please, complete the form ");
+        this.errors.push("Please, complete the form ");
       }
       if (this.email !== this.input.emailConfirmation) {
-        this.errors.append("This is a test");
+        this.errors.push("This is a test");
       }
       axios.post();
     },
