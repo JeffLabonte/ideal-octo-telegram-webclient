@@ -15,10 +15,12 @@
 <script>
 import axios from "axios";
 
-const API_400_INVALID_CREDS_MESSAGE = "Unable to log in with provided credentials.";
+const API_400_INVALID_CREDS_MESSAGE =
+  "Unable to log in with provided credentials.";
 
 const GENERIC_ERROR = "Unexpected Error! Please Contact Your SysAdmin! You :)";
-const INVALID_CREDENTIALS = "The credentials you have provided are invalid. Please try again.";
+const INVALID_CREDENTIALS =
+  "The credentials you have provided are invalid. Please try again.";
 const NO_CREDENTIALS = "Please enter your credentials.";
 
 function getErrorMessage(response) {
