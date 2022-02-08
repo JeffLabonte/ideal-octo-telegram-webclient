@@ -1,14 +1,7 @@
-import { Store } from 'vuex';
+export const state = () => ({
+  apiKey: null,
+});
 
-const createStore = () => {
-  return new Store({
-    state: () => ({
-      api_key: null,
-    }),
-    getters: {},
-    mutations: {},
-    actions: {},
-  });
-};
-
-export default createStore;
+export const getters = {};
+export const mutations = {};
+export const actions = {};
