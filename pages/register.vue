@@ -4,7 +4,13 @@
     <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
     <div class="form-floating">
       <label for="floatingInput">Email Address</label>
-      <input id="floatingInput" class="form-control" type="email" placeholder="name@examplecom" />
+      <input
+        id="floatingInput"
+        class="form-control"
+        type="email"
+        v-model="email"
+        placeholder="name@examplecom"
+      />
     </div>
     <div class="form-floating">
       <label for="floatingEmailConfirmation">Confirm Email Address</label>
@@ -12,18 +18,38 @@
         id="floatingEmailConfirmation"
         class="form-control"
         type="email"
-        placeholder="name@examplecom"
         v-model="emailConfirmation"
+        placeholder="name@examplecom"
       />
     </div>
     <div class="form-floating">
       <label for="floatingPassword">Password</label>
-      <input id="floatingPassword" class="form-control" type="password" placeholder="Password" />
+      <input
+        id="floatingPassword"
+        class="form-control"
+        type="password"
+        v-model="password"
+        placeholder="Password"
+      />
+    </div>
+    <div class="form-floating">
+      <label for="floatingPasswordConfirmation">Password</label>
+      <input
+        id="floatingPassword"
+        class="form-control"
+        type="password"
+        v-model="password"
+        placeholder="Password"
+      />
     </div>
     <div class="container">
       <div class="row">
         <div class="column">
-          <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
+          <button
+            class="w-100 btn btn-lg btn-primary"
+            type="submit"
+            v-on:submit="register  "
+          >Sign in</button>
         </div>
         <div class="column">
           <button class="w-100 btn btn-lg">
@@ -45,6 +71,9 @@ export default {
       password: '',
       passwordConfirmation: '',
     };
+  },
+  function: () => {
+    register: () => {};
   },
 };
 </script>
