@@ -45,11 +45,7 @@
     <div class="container">
       <div class="row">
         <div class="column">
-          <button
-            class="w-100 btn btn-lg btn-primary"
-            type="submit"
-            v-on:submit="register  "
-          >Sign in</button>
+          <button class="w-100 btn btn-lg btn-primary" type="submit" v-on:submit="register">Sign in</button>
         </div>
         <div class="column">
           <button class="w-100 btn btn-lg">
@@ -70,10 +66,39 @@ export default {
       emailConfirmation: '',
       password: '',
       passwordConfirmation: '',
+      errors: null,
     };
   },
-  function: () => {
-    register: () => {};
+  methods: {
+    reset_password: () => {
+      this.password = '';
+      this.passwordConfirmation = '';
+    },
+    reset_email: () => {
+      this.email = '';
+      this.emailConfirmation = '';
+    },
+    register: () => {
+      if (
+        this.email !== '' ||
+        this.emailConfirmation !== '' ||
+        this.password !== '' ||
+        this.passwordConfirmation !== ''
+      ) {
+        if (this.email !== this.emailConfirmation) {
+          this.errors = 'Your email need to be the same as the confirmation';
+          this.reset_password();
+        } else if (this.password !== this.passwordConfirmation) {
+          this.errors = 'Your password needs to match the confirmation';
+          this.reset_password();
+        } else {
+          return null;
+        }
+      } else {
+        self.errors =
+          'You need to enter a password, a password confirmation, an email, and confirm your email';
+      }
+    },
   },
 };
 </script>
