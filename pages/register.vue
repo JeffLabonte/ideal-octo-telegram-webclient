@@ -67,6 +67,7 @@ export default {
       password: '',
       passwordConfirmation: '',
       errors: null,
+      backendUrl: process.env.BACKEND_URL,
     };
   },
   methods: {
@@ -77,6 +78,9 @@ export default {
     reset_email: () => {
       this.email = '';
       this.emailConfirmation = '';
+    },
+    send_registration_query: () => {
+      this.$axios.post();
     },
     register: () => {
       if (
