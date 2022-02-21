@@ -1,14 +1,22 @@
 <template>
   <main class="form-signin">
+    <div v-if="error">
+      <p>{{error}}</p>
+    </div>
+    <div v-if="messages">
+      <ul>
+        <li v-for="key, message in messages" v-bind:key="key">{{ message }}</li>
+      </ul>
+    </div>
     <img src alt width="72" height="57" />
-    <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+    <h1 class="h3 mb-3 fw-normal">Please Register</h1>
     <div class="form-floating">
       <label for="floatingInput">Email Address</label>
       <input
         id="floatingInput"
         class="form-control"
-        type="email"
         v-model="email"
+        type="email"
         placeholder="name@examplecom"
       />
     </div>
@@ -17,8 +25,8 @@
       <input
         id="floatingEmailConfirmation"
         class="form-control"
-        type="email"
         v-model="emailConfirmation"
+        type="email"
         placeholder="name@examplecom"
       />
     </div>
@@ -27,25 +35,25 @@
       <input
         id="floatingPassword"
         class="form-control"
-        type="password"
         v-model="password"
+        type="password"
         placeholder="Password"
       />
     </div>
     <div class="form-floating">
-      <label for="floatingPasswordConfirmation">Password</label>
+      <label for="floatingPasswordConfirmation">Password Confirmation</label>
       <input
         id="floatingPassword"
         class="form-control"
+        v-model="passwordConfirmation"
         type="password"
-        v-model="password"
         placeholder="Password"
       />
     </div>
     <div class="container">
       <div class="row">
         <div class="column">
-          <button class="w-100 btn btn-lg btn-primary" type="submit" v-on:submit="register">Sign in</button>
+          <button class="w-100 btn btn-lg btn-primary" type="submit" v-on:click="register">Register</button>
         </div>
         <div class="column">
           <button class="w-100 btn btn-lg">
@@ -66,8 +74,9 @@ export default {
       emailConfirmation: '',
       password: '',
       passwordConfirmation: '',
-      errors: null,
-      backendUrl: process.env.BACKEND_URL,
+      error: null,
+      registrationURL: `{{process.env.BACKEND_URL}}/api/auth/registration/`,
+      messages: null,
     };
   },
   methods: {
@@ -79,8 +88,20 @@ export default {
       this.email = '';
       this.emailConfirmation = '';
     },
-    send_registration_query: () => {
-      this.$axios.post();
+    sendRegistrationQuery: () => {
+      this.$axios
+        .post(this.registrationURL, {
+          email: this.email,
+          username: this.email,
+          password1: this.password,
+          password2: this.passwordConfirmation,
+        })
+        .then((response) => {
+          console.log(response);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     },
     register: () => {
       if (
@@ -90,13 +111,13 @@ export default {
         this.passwordConfirmation !== ''
       ) {
         if (this.email !== this.emailConfirmation) {
-          this.errors = 'Your email need to be the same as the confirmation';
+          this.error = 'Your email need to be the same as the confirmation';
           this.reset_password();
         } else if (this.password !== this.passwordConfirmation) {
-          this.errors = 'Your password needs to match the confirmation';
+          this.error = 'Your password needs to match the confirmation';
           this.reset_password();
         } else {
-          return null;
+          this.sendRegistrationQuery();
         }
       } else {
         self.errors =
@@ -106,4 +127,3 @@ export default {
   },
 };
 </script>
->
