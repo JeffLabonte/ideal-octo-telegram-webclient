@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "nuxt",
-    "dev-cloud": ". ./env/dev.sh && nuxt -H 0.0.0.0",
+    "dev-cloud": "nuxt -H 0.0.0.0",
     "build": "nuxt build",
     "start": "nuxt start",
     "generate": "nuxt generate",
