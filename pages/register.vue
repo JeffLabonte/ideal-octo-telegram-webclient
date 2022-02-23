@@ -75,20 +75,21 @@ export default {
       password: '',
       passwordConfirmation: '',
       error: null,
-      registrationURL: `{{process.env.BACKEND_URL}}/api/auth/registration/`,
+      registrationURL: `http://localhost/api/auth/registration/`,
       messages: null,
     };
   },
   methods: {
-    reset_password: () => {
+    reset_password() {
       this.password = '';
       this.passwordConfirmation = '';
     },
-    reset_email: () => {
+    reset_email() {
       this.email = '';
       this.emailConfirmation = '';
     },
-    sendRegistrationQuery: () => {
+    sendRegistrationQuery() {
+      console.log(this.registrationURL);
       this.$axios
         .post(this.registrationURL, {
           email: this.email,
@@ -103,7 +104,7 @@ export default {
           console.log(error);
         });
     },
-    register: () => {
+    register() {
       if (
         this.email !== '' ||
         this.emailConfirmation !== '' ||
