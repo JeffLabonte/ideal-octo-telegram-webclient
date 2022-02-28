@@ -89,7 +89,6 @@ export default {
       this.emailConfirmation = '';
     },
     sendRegistrationQuery() {
-      console.log(this.registrationURL);
       this.$axios
         .post(this.registrationURL, {
           email: this.email,
@@ -98,10 +97,10 @@ export default {
           password2: this.passwordConfirmation,
         })
         .then((response) => {
-          console.log(response);
+          this.$router.push('/index');
         })
         .catch((error) => {
-          console.log(error);
+          this.error = error.messages;
         });
     },
     register() {
