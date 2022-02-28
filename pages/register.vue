@@ -75,7 +75,7 @@ export default {
       password: '',
       passwordConfirmation: '',
       error: null,
-      registrationURL: `http://localhost/api/auth/registration/`,
+      registrationURL: `http://192.168.68.117/api/auth/registration`,
       messages: null,
     };
   },
