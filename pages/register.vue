@@ -72,10 +72,13 @@ export default {
       password: '',
       passwordConfirmation: '',
       registrationURL: `http://192.168.68.117/api/auth/registration`,
-      messages: null,
+      errors: [],
     };
   },
   methods: {
+    reset_errors() {
+      this.errors.split(0, this.errors.length);
+    },
     reset_password() {
       this.password = '';
       this.passwordConfirmation = '';
@@ -97,9 +100,19 @@ export default {
         })
         .catch((error) => {
           if (error.response.status === 400) {
-            this.error = error.response.data;
-          } else {
-            this.error = 'Error Unknown';
+            const data = error.response.data;
+            Object.entries(data).forEach((entry) => {
+              const key = entry[0];
+              const values = entry[1];
+              console.log(key);
+              console.log(values);
+            });
+          } else if (error.response.status === 500) {
+            this.$set(
+              this.errors,
+              0,
+              'Something went wrong, please contact the administrator'
+            );
           }
         });
     },
@@ -111,17 +124,28 @@ export default {
         this.passwordConfirmation !== ''
       ) {
         if (this.email !== this.emailConfirmation) {
-          this.error = 'Your email need to be the same as the confirmation';
+          this.$set(
+            this.errors,
+            0,
+            'Your email need to be the same as the confirmation'
+          );
           this.reset_password();
         } else if (this.password !== this.passwordConfirmation) {
-          this.error = 'Your password needs to match the confirmation';
+          this.$set(
+            this.errors,
+            0,
+            'Your password needs to match the confirmation'
+          );
           this.reset_password();
         } else {
           this.sendRegistrationQuery();
         }
       } else {
-        self.errors =
-          'You need to enter a password, a password confirmation, an email, and confirm your email';
+        this.$set(
+          this.errors,
+          0,
+          'You need to enter a password, a password confirmation, an email, and confirm your email'
+        );
       }
     },
   },
