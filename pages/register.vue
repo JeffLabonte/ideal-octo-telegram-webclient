@@ -100,7 +100,11 @@ export default {
           this.$router.push('/index');
         })
         .catch((error) => {
-          this.error = error.messages;
+          if (error.response.status === 400) {
+            this.error = error.response.data;
+          } else {
+            this.error = 'Error Unknown';
+          }
         });
     },
     register() {
