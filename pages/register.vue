@@ -1,11 +1,8 @@
 <template>
   <main class="form-signin">
-    <div v-if="error">
-      <p>{{ error }}</p>
-    </div>
-    <div v-if="messages">
+    <div v-if="errors.length > 0">
       <ul>
-        <li v-for="(key, message) in messages" v-bind:key="key">{{ message }}</li>
+        <li v-for="(error, key) in errors" v-bind:key="key">{{ error }}</li>
       </ul>
     </div>
     <img src alt width="72" height="57" />
@@ -74,7 +71,6 @@ export default {
       emailConfirmation: '',
       password: '',
       passwordConfirmation: '',
-      error: null,
       registrationURL: `http://192.168.68.117/api/auth/registration`,
       messages: null,
     };
