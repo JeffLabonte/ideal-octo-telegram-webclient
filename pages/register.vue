@@ -1,11 +1,11 @@
 <template>
   <main class="form-signin">
     <div v-if="error">
-      <p>{{error}}</p>
+      <p>{{ error }}</p>
     </div>
     <div v-if="messages">
       <ul>
-        <li v-for="key, message in messages" v-bind:key="key">{{ message }}</li>
+        <li v-for="(key, message) in messages" v-bind:key="key">{{ message }}</li>
       </ul>
     </div>
     <img src alt width="72" height="57" />
