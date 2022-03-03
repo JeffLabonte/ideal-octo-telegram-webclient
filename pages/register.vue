@@ -2,7 +2,7 @@
   <main class="form-signin">
     <div v-if="errors.length > 0">
       <ul>
-        <li v-for="(error, key) in errors" v-bind:key="key">{{ error }}</li>
+        <li v-for="(error, key) in errors" :key="key">{{ error }}</li>
       </ul>
     </div>
     <img src alt width="72" height="57" />
@@ -11,8 +11,8 @@
       <label for="floatingInput">Email Address</label>
       <input
         id="floatingInput"
-        class="form-control"
         v-model="email"
+        class="form-control"
         type="email"
         placeholder="name@examplecom"
       />
@@ -21,18 +21,23 @@
       <label for="floatingEmailConfirmation">Confirm Email Address</label>
       <input
         id="floatingEmailConfirmation"
-        class="form-control"
         v-model="emailConfirmation"
+        class="form-control"
         type="email"
         placeholder="name@examplecom"
       />
+      <div v-if="emailErrors.length > 0">
+        <ul>
+          <li v-for="(error, key) in emailErrors" :key="key">{{ error }}</li>
+        </ul>
+      </div>
     </div>
     <div class="form-floating">
       <label for="floatingPassword">Password</label>
       <input
         id="floatingPassword"
-        class="form-control"
         v-model="password"
+        class="form-control"
         type="password"
         placeholder="Password"
       />
@@ -41,16 +46,21 @@
       <label for="floatingPasswordConfirmation">Password Confirmation</label>
       <input
         id="floatingPassword"
-        class="form-control"
         v-model="passwordConfirmation"
+        class="form-control"
         type="password"
         placeholder="Password"
       />
+      <div v-if="passwordErrors.length > 0">
+        <ul>
+          <li v-for="(error, key) in passwordErrors" :key="key">{{ error }}</li>
+        </ul>
+      </div>
     </div>
     <div class="container">
       <div class="row">
         <div class="column">
-          <button class="w-100 btn btn-lg btn-primary" type="submit" v-on:click="register">Register</button>
+          <button class="w-100 btn btn-lg btn-primary" type="submit" @click="register">Register</button>
         </div>
         <div class="column">
           <button class="w-100 btn btn-lg">
@@ -73,6 +83,8 @@ export default {
       passwordConfirmation: '',
       registrationURL: `http://192.168.68.117/api/auth/registration`,
       errors: [],
+      passwordErrors: [],
+      emailErrors: [],
     };
   },
   methods: {
@@ -104,8 +116,20 @@ export default {
             Object.entries(data).forEach((entry) => {
               const key = entry[0];
               const values = entry[1];
-              console.log(key);
-              console.log(values);
+
+              switch (key) {
+                case 'password':
+                case 'password1':
+                  values.forEach((value) => {
+                    this.passwordErrors.push(value);
+                  });
+                  break;
+                case 'email':
+                  values.forEach((value) => {
+                    this.emailErrors.push(value);
+                  });
+                  break;
+              }
             });
           } else if (error.response.status === 500) {
             this.$set(
