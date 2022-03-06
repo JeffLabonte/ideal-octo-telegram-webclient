@@ -9,5 +9,7 @@ export const mutations = {
   }
 };
 export const actions = {
-
+  login(context, payload) {
+    this.$axios.post();
+  }
 };
