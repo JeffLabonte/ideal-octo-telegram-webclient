@@ -44,13 +44,12 @@ export default {
     return {
       email: '',
       password: '',
-      loginUrl: 'http://192.168.68.117/api/auth/login',
     };
   },
   methods: {
     login() {
       this.$store.dispatch('login', {
-        username: this.username,
+        username: this.email,
         password: this.password,
       });
     },
