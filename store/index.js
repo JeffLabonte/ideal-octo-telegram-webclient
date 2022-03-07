@@ -1,5 +1,6 @@
 export const state = () => ({
   apiKey: null,
+  loginUrl: 'http://192.168.68.117/api/auth/login',
 });
 
 export const getters = {};
@@ -10,6 +11,11 @@ export const mutations = {
 };
 export const actions = {
   login(context, payload) {
-    this.$axios.post();
+    this.$axios.post(
+      context.loginUrl,
+      payload,
+    ).then((response) => {
+      console.log(response);
+    });
   }
 };
