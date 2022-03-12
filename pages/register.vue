@@ -108,7 +108,7 @@ export default {
           password2: this.passwordConfirmation,
         })
         .then((response) => {
-          this.$router.push('/home');
+          this.$router.push('/');
         })
         .catch((error) => {
           if (error.response.status === 400) {
